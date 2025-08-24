@@ -1,0 +1,11 @@
+{
+    "name": "TestHero",
+    "health": 110,
+    "score": 50,
+    "inventory": [
+        "sword",
+        "potion",
+        "map",
+        "shield"
+    ]
+}
