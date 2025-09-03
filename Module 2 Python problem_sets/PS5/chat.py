@@ -7,13 +7,23 @@ import sys
 import os
 
 # Add the project root to Python path to access Claude practice modules
-project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+current_file_dir = os.path.dirname(os.path.abspath(__file__))  # PS5 directory
+problem_sets_dir = os.path.dirname(current_file_dir)  # problem_sets directory  
+project_root = os.path.dirname(problem_sets_dir)  # ai-dev-learning directory
 claude_practice_path = os.path.join(project_root, 'Claude practice')
+
 sys.path.insert(0, claude_practice_path)
 
 # Import our classes
 from zoo import Animal, Bird, Caretaker
-from ai_tools.ai_assistant import AIAssistant
+
+# Import AIAssistant with error handling
+try:
+    from ai_tools.ai_assistant import AIAssistant
+except ImportError as e:
+    print(f"Error importing AIAssistant: {e}")
+    print("Make sure you're running this from the correct directory and have set up the project structure correctly.")
+    sys.exit(1)
 
 def main():
     """Main function to demonstrate Claude integration with zoo animals"""
